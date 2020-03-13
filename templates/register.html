@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Register
+{% endblock %}
+
+{% block main %}
+	<div>
+		<img class="avatar" src="/static/register.jpg" alt="Register">
+	</div>
+
+	<h3 class="text-center mt-2">Register a new account</h3>
+
+	<div class="mt-4 d-flex justify-content-center">
+		<form class="p-4 rounded bg-light" action="/register" method="post">
+			<div class="form-group">
+				<label for="username_register">Username</label>
+				<input class="form-control" type="text" id="username_register" name="username" placeholder="Username" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password_register">Password</label>
+				<input class="form-control" type="password" id="password_register" name="password" placeholder="Password" required>
+			</div>
+
+			<div class="form-group">
+				<label for="confirmation">Confirm password</label>
+				<input class="form-control" type="password" id="confirmation" name="confirmation" placeholder="Confirm password" required>
+			</div>
+
+			<button class="btn btn-dark" type="submit">Register</button>
+
+		</form>
+	</div>
+{% endblock %}

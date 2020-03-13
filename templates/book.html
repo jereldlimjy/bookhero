@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Book
+{% endblock %}
+
+{% block main %}
+	<h3>Book Information: <u><i>{{ book.title }}</i></u></h3>
+
+	<div class="information border w-50 mt-3 mb-4 rounded p-3">
+		<h5>Author: {{ book.author }}</h5>
+		<h5>Publication Year: {{ book.year }}</h5>
+		<h5>ISBN: {{ book.isbn }}</h5>
+		<h5>Rating: {{ avg_rating }} --- {{ ratings }} votes</h5>
+		<p class="small text-muted">Data provided by Goodreads</p>
+	</div>
+
+	<div>
+		<h3>Submit a review</h3>
+		<div class="form-group">
+		<form action="{{ url_for('review', book_id=book.id) }}" method="post">
+			<label class="mr-1">Rating:</label>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="rating1" name="rating" value="1" class="custom-control-input" required>
+				<label class="custom-control-label" for="rating1">1</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="rating2" name="rating" value="2" class="custom-control-input">
+				<label class="custom-control-label" for="rating2">2</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="rating3" name="rating" value="3" class="custom-control-input">
+				<label class="custom-control-label" for="rating3">3</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="rating4" name="rating" value="4" class="custom-control-input">
+				<label class="custom-control-label" for="rating4">4</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="rating5" name="rating" value="5" class="custom-control-input">
+				<label class="custom-control-label" for="rating5">5</label>
+			</div>
+			<textarea class="form-control w-50 mb-2" rows="3" name="review" required></textarea>
+			<button class="btn btn-dark" type="submit">Submit</button>
+		</form>
+	</div>
+
+	<div>
+		<h3 class="mt-4">Reviews</h3>
+		{% for row in reviews %}
+			<div class="card w-50 mb-2">
+				<div class="card-header">
+				    <span><span class="text-info"><b>{{ row.username }} </b></span>rated <span class="text-warning">{{ row.rating }} out of 5 stars </span>on {{ row.date }}</span>
+				</div>
+				<div class="card-body">
+					<p class="card-text">{{ row.review }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

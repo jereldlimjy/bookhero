@@ -1,0 +1,49 @@
+body {
+	background-color: #D0F0C0;
+	min-height:100vh;
+}
+
+
+.sticky-footer-wrapper {
+   min-height:100vh;
+}
+
+
+.flex-fill {
+   flex: 1 1 auto;
+}
+
+
+.hero {
+	width: 85%;
+}
+
+
+.footer {
+	text-align: center;
+}
+
+
+.avatar {
+	border-radius: 50%;
+	width: 105px;
+	height: 105px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.error {
+	padding: 120px 0;
+	text-align: center;
+}
+
+.superman {
+	width: 65%;
+}
+
+
+.information {
+	background-color: #EBDEF0;
+}

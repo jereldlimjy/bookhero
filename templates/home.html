@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block main %}
+	<h2>Search for a book</h2>
+
+	<div class="row">
+
+		<div class="col mt-5">
+			<p>Search via the book's ISBN number, title, author or publication year!</p>
+			<form class="p-4 border bg-light rounded" action="/search" method="post">
+				<div class="form-group">
+					<select required aria-required="true" class="form-control" name="search_by">
+						<option selected value="">Choose...</option>
+						<option value="isbn">ISBN Number</option>
+						<option value="title">Title</option>
+						<option value="author">Author</option>
+						<option value="year">Publication Year</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" name="search">
+				</div>
+
+				<button class="btn btn-dark" type="submit">Search</button>
+			</form>
+		</div>
+
+		<div class="col ml-5 pl-5">
+			<img class="superman" src="/static/supermanbook.png" alt="Superman Carrying Books">
+		</div>
+	</div>
+
+{% endblock %}
