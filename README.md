@@ -6,6 +6,8 @@ A web app that uses the Goodreads API to enable users to search for books accord
 
 Users are also able to submit reviews and ratings on the website.
 
+- Flask, PostgreSQL, Heroku
+
 Preview:
 | ![login page](/login.png) |
 |:--:|
