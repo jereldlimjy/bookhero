@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, session, render_template, request, session, flash, redirect
+from flask import Flask, session, render_template, request, session, flash, redirect, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -197,3 +197,23 @@ def review(book_id):
 	db.commit()
 
 	return redirect(f"/book/{book_id}")
+
+@app.route("/api/<string:isbn>")
+def book_api(isbn):
+	# Return book details in json
+
+	# avg_score cast as float because json doesn't support decimal
+	row = db.execute("SELECT title, author, year, isbn, CAST(ROUND(AVG(rating)::numeric,1) AS FLOAT) AS avg_score, COUNT(rating) AS review_count FROM books LEFT JOIN reviews ON books.id = reviews.book_id WHERE isbn=:isbn GROUP BY(title,author,year,isbn);", {"isbn": isbn}).fetchone()
+
+	# If ISBN number is invalid
+	if row is None:
+		return jsonify({"error": "Invalid isbn"}), 422
+
+	return jsonify({
+		"title": row.title,
+		"author": row.author,
+		"year": row.year,
+		"isbn": row.isbn,
+		"review_count": row.review_count,
+		"average_score": row.avg_score
+		})

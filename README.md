@@ -9,18 +9,18 @@ Users are also able to submit reviews and ratings on the website.
 - Flask, PostgreSQL, Heroku
 
 Preview:
-| ![login page](/login.png) |
+| ![login page](/assets/login.png) |
 |:--:|
 | *login/registration page* |
 
-| ![home page](/homepage.png) |
+| ![home page](/assets/homepage.png) |
 |:--:|
 | *home page to search for books* |
 
-| ![search](/book.png) |
+| ![search](/assets/book.png) |
 |:--:|
 | *search results* |
 
-| ![info](/info.png) |
+| ![info](/assets/info.png) |
 |:--:|
 | *more information about the book, submit your own review and view reviews by others* |
