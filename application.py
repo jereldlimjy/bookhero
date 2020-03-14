@@ -200,7 +200,7 @@ def review(book_id):
 
 @app.route("/api/<string:isbn>")
 def book_api(isbn):
-	# Return book details in json
+	''' Return book details in json '''
 
 	# avg_score cast as float because json doesn't support decimal
 	row = db.execute("SELECT title, author, year, isbn, CAST(ROUND(AVG(rating)::numeric,1) AS FLOAT) AS avg_score, COUNT(rating) AS review_count FROM books LEFT JOIN reviews ON books.id = reviews.book_id WHERE isbn=:isbn GROUP BY(title,author,year,isbn);", {"isbn": isbn}).fetchone()
