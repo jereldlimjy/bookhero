@@ -11,7 +11,6 @@ from helpers import login_required
 import requests
 
 app = Flask(__name__)
-app.secret_key = "dfdfsdsdsdsdsadsa"
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
